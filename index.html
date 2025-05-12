@@ -1,12 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт онлайн-школы англйиского языка</title>
+    <title>Языковая школа</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Наш файл стилей -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
 <body>
-    <header>Заголовок сайта</header>
-    Главная страница
+<!-- Блок header -->
+<header class="header">
+    <div class="container header__container">
+        <a href="#" class="header__logo-link">
+            <img src="img/image-eng-book.png" alt="Логотип школы" class="header__logo">
+        </a>
+
+        <div>
+            <h1>ШКОЛА АНГЛИЙСКОГО</h1>
+        </div>
+
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a href="#about" class="header__nav-link">О школе</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#teachers" class="header__nav-link">Репетиторы</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#certificates" class="header__nav-link">Сертификаты</a>
+                </li>
+            </ul>
+
+            <div class="header__auth">
+                <button class="button button--outline">Вход</button>
+                <button class="button button--primary">Регистрация</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Блок hero -->
+<section class="hero">
+    <div class="container hero__container">
+        <div class="hero__content">
+            <h2 class="hero__title">Изучайте языки с лучшими преподавателями</h2>
+            <p class="hero__text">Наша школа предлагает индивидуальный подход к каждому студенту и гарантирует результат.</p>
+            <button class="button button--primary button--lg" data-bs-toggle="enrollment">Записаться на пробный урок</button>
+        </div>
+
+        <div class="hero__form enrollment-form" data-location="Главная форма">
+            <h3 class="enrollment-form__title">Оставьте заявку</h3>
+            <form class="enrollment-form__content">
+                <div class="enrollment-form__group">
+                    <input type="text" class="enrollment-form__input" placeholder="Ваше имя" required>
+                </div>
+                <div class="enrollment-form__group">
+                    <input type="tel" class="enrollment-form__input" placeholder="Телефон" required>
+                </div>
+                <div class="enrollment-form__group">
+                    <select class="enrollment-form__select">
+                        <option value="" selected disabled>Выберите курс</option>
+                        <option>Английский</option>
+                        <option>Немецкий</option>
+                        <option>Французский</option>
+                        <option>Испанский</option>
+                    </select>
+                </div>
+                <button type="submit" class="enrollment-form__submit button button--primary">
+                    Отправить заявку
+                </button>
+            </form>
+            <p class="enrollment-form__note">Или перезвоните нам: <a href="tel:+78001234567">8 (800) 123-45-67</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- Блок features -->
+<section id="about" class="features">
+    <div class="container">
+        <h2 class="features__title">Преимущества нашей школы</h2>
+
+        <div class="features__grid">
+            <div class="feature">
+                <div class="feature__icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3 class="feature__title">Опытные преподаватели</h3>
+                <p class="feature__text">Все наши преподаватели имеют международные сертификаты и минимум 5 лет опыта работы.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature__icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3 class="feature__title">Индивидуальный подход</h3>
+                <p class="feature__text">Программа обучения подбирается индивидуально под ваши цели и уровень подготовки.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature__icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3 class="feature__title">Международные сертификаты</h3>
+                <p class="feature__text">По окончании курса вы получите сертификат международного образца.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Блок teachers -->
+<section id="teachers" class="teachers">
+    <div class="container">
+        <h2 class="teachers__title">Наши преподаватели</h2>
+
+        <div class="teachers__grid">
+            <div class="teacher">
+                <img src="img/Untitled18_20250331121112.png" alt="Преподаватель" class="teacher__photo">
+                <h3 class="teacher__name">Анна Иванова</h3>
+                <p class="teacher__subject">Английский язык</p>
+                <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+            </div>
+
+            <div class="teacher">
+                <img src="img/Untitled18_20250331121158.png" alt="Преподаватель" class="teacher__photo">
+                <h3 class="teacher__name">Зинаида Петровна</h3>
+                <p class="teacher__subject">Немецкий язык</p>
+                <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+            </div>
+
+            <div class="teacher">
+                <img src="img/Untitled18_20250331121213.png" alt="Преподаватель" class="teacher__photo">
+                <h3 class="teacher__name">Мария Петрова</h3>
+                <p class="teacher__subject">Французский язык</p>
+                <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+            </div>
+
+            <div class="teacher">
+                <img src="img/Screenshot_3.png" alt="Преподаватель" class="teacher__photo">
+                <h3 class="teacher__name">Иван Кузнецов</h3>
+                <p class="teacher__subject">Испанский язык</p>
+                <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Блок cta -->
+<section class="cta">
+    <div class="container">
+        <h2 class="cta__title">Готовы начать обучение?</h2>
+        <div class="cta__buttons">
+            <button class="button button--light button--lg" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+            <button class="button button--outline-light button--lg">Узнать больше</button>
+        </div>
+    </div>
+</section>
+
+<!-- Блок footer -->
+<footer class="footer">
+    <div class="container footer__container">
+        <div class="footer__column">
+            <h3 class="footer__column-title">Контакты</h3>
+            <address class="footer__address">
+                г. Москва, ул. Примерная, 123
+            </address>
+            <a href="tel:+78001234567" class="footer__phone">8 (800) 123-45-67</a>
+        </div>
+
+        <div class="footer__column">
+            <h3 class="footer__column-title">Социальные сети</h3>
+            <div class="footer__social">
+                <a href="#" class="footer__social-link"><i class="fab fa-vk"></i></a>
+                <a href="#" class="footer__social-link"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="footer__social-link"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="footer__social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="team">
+            <p>Разработано: Меморский Н., Саядянц А., 2025</p>
+          </div>
+
+        <div class="footer__column">
+            <h3 class="footer__column-title">Карта</h3>
+            <div class="footer__map">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5771d62aa71e23ff3f8094823ab341473617311097681ce93fb8893ca3ff8108&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Модальное окно записи -->
+<div class="modal fade" id="enrollmentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content enrollment-form">
+            <button type="button" class="enrollment-form__close" data-bs-dismiss="modal" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="enrollment-form__body">
+                <h3 class="enrollment-form__title">Запись на занятие</h3>
+                <form class="enrollment-form__content">
+                    <div class="enrollment-form__group">
+                        <input type="text" class="enrollment-form__input" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="enrollment-form__group">
+                        <input type="tel" class="enrollment-form__input" placeholder="Телефон" required>
+                    </div>
+                    <div class="enrollment-form__group">
+                        <select class="enrollment-form__select">
+                            <option value="" selected disabled>Выберите курс</option>
+                            <option>Английский</option>
+                            <option>Немецкий</option>
+                            <option>Французский</option>
+                            <option>Испанский</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="enrollment-form__submit button button--primary">
+                        Отправить заявку
+                    </button>
+                </form>
+                <p class="enrollment-form__note">Или перезвоните нам: <a href="tel:+78001234567">8 (800) 123-45-67</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="scrollTopBtn" class="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+<script src="scripts/scripts.js" defer></script>
+
+  <div class="content" style="display: none;">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </body>
 </html>
