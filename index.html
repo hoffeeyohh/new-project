@@ -18,7 +18,7 @@
 <header class="header">
     <div class="container header__container">
         <a href="#" class="header__logo-link">
-            <img src="img/image-eng-book.png" alt="Логотип школы" class="header__logo">
+            <img src="img/logo.png" alt="Логотип школы" class="header__logo">
         </a>
 
         <div>
@@ -45,7 +45,7 @@
         </nav>
     </div>
 </header>
-
+<main aria-label="Основной контент">
 <!-- Блок hero -->
 <section class="hero">
     <div class="container hero__container">
@@ -115,42 +115,58 @@
     </div>
 </section>
 
-<!-- Блок teachers -->
-<section id="teachers" class="teachers">
-    <div class="container">
-        <h2 class="teachers__title">Наши преподаватели</h2>
+    <!-- Блок teachers -->
+    <section id="teachers" class="teachers">
+        <div class="container">
+            <h2 class="teachers__title">Наши преподаватели</h2>
 
-        <div class="teachers__grid">
-            <div class="teacher">
-                <img src="img/Untitled18_20250331121112.png" alt="Преподаватель" class="teacher__photo">
-                <h3 class="teacher__name">Анна Иванова</h3>
-                <p class="teacher__subject">Английский язык</p>
-                <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
-            </div>
+            <!-- Карусель Swiper -->
+            <div class="swiper teacherSwiper">
+                <div class="swiper-wrapper">
+                    <!-- Слайды -->
+                    <div class="swiper-slide">
+                        <div class="teacher">
+                            <img src="img/teacher_anna.png" alt="Преподаватель" class="teacher__photo">
+                            <h3 class="teacher__name">Анна Иванова</h3>
+                            <p class="teacher__subject">Английский язык</p>
+                            <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+                        </div>
+                    </div>
 
-            <div class="teacher">
-                <img src="img/Untitled18_20250331121158.png" alt="Преподаватель" class="teacher__photo">
-                <h3 class="teacher__name">Зинаида Петровна</h3>
-                <p class="teacher__subject">Немецкий язык</p>
-                <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
-            </div>
+                    <div class="swiper-slide">
+                        <div class="teacher">
+                            <img src="img/teacher_zinaida.png" alt="Преподаватель" class="teacher__photo">
+                            <h3 class="teacher__name">Зинаида Петровна</h3>
+                            <p class="teacher__subject">Немецкий язык</p>
+                            <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+                        </div>
+                    </div>
 
-            <div class="teacher">
-                <img src="img/Untitled18_20250331121213.png" alt="Преподаватель" class="teacher__photo">
-                <h3 class="teacher__name">Мария Петрова</h3>
-                <p class="teacher__subject">Французский язык</p>
-                <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
-            </div>
+                    <div class="swiper-slide">
+                        <div class="teacher">
+                            <img src="img/teacher_maria.png" alt="Преподаватель" class="teacher__photo">
+                            <h3 class="teacher__name">Мария Петрова</h3>
+                            <p class="teacher__subject">Французский язык</p>
+                            <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+                        </div>
+                    </div>
 
-            <div class="teacher">
-                <img src="img/Screenshot_3.png" alt="Преподаватель" class="teacher__photo">
-                <h3 class="teacher__name">Иван Кузнецов</h3>
-                <p class="teacher__subject">Испанский язык</p>
-                <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+                    <div class="swiper-slide">
+                        <div class="teacher">
+                            <img src="img/teacher_ivan.png" alt="Преподаватель" class="teacher__photo">
+                            <h3 class="teacher__name">Иван Кузнецов</h3>
+                            <p class="teacher__subject">Испанский язык</p>
+                            <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Навигация -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- Блок cta -->
 <section class="cta">
@@ -162,6 +178,7 @@
         </div>
     </div>
 </section>
+</main>
 
 <!-- Блок footer -->
 <footer class="footer">
@@ -183,7 +200,7 @@
                 <a href="#" class="footer__social-link"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
-        <div class="team">
+        <div class="footer__team">
             <p>Разработано: Меморский Н., Саядянц А., 2025</p>
           </div>
 
@@ -191,8 +208,6 @@
             <h3 class="footer__column-title">Карта</h3>
             <div class="footer__map">
                 <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5771d62aa71e23ff3f8094823ab341473617311097681ce93fb8893ca3ff8108&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
-            </div>
-        </div>
     </div>
 </footer>
 
@@ -239,7 +254,7 @@
   </button>
 <script src="scripts/scripts.js" defer></script>
 
-  <div class="content" style="display: none;">
+  <div class="content" style=.hidden{display:none;}>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </body>
