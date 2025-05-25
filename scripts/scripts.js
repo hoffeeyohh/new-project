@@ -17,6 +17,13 @@ const config = {
     }
 };
 
+// Основная функция инициализации
+document.addEventListener('DOMContentLoaded', function() {
+    initForms();
+    initScrollButton();
+    loadData();
+});
+
 // Инициализация всех форм
 function initForms() {
     // Обработка стандартных форм
@@ -51,32 +58,6 @@ async function handleFormSubmit(form) {
     await sendToTelegram(message, form, submitBtn, originalContent);
 }
 
-// Обработка модальной формы
-async function handleModalFormSubmit() {
-    const form = document.querySelector('.enrollment-modal__form');
-    const formData = {
-        name: form.querySelector('.enrollment-form__input[placeholder="Ваше имя"]').value,
-        phone: form.querySelector('.enrollment-form__input[placeholder="Телефон"]').value,
-        comment: form.querySelector('.enrollment-form__textarea').value,
-        callback: form.querySelector('.enrollment-form__checkbox input').checked,
-        teacher: document.querySelector('.enrollment-form__teacher-item--selected')?.textContent || 'не указан',
-        time: document.querySelector('.enrollment-form__time-slot--selected')?.textContent || 'не указано'
-    };
-
-    if (!validateForm(formData)) return;
-
-    const submitBtn = document.querySelector('.enrollment-form__nav-btn--next');
-    const originalContent = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = config.messages.loading;
-
-    const message = generateModalMessage(formData);
-    await sendToTelegram(message, form, submitBtn, originalContent);
-
-    // Закрываем модальное окно после успешной отправки
-    bootstrap.Modal.getInstance(document.getElementById('enrollmentModal')).hide();
-}
-
 // Валидация формы
 function validateForm(formData) {
     if (!formData.name || !formData.phone) {
@@ -92,17 +73,6 @@ function generateStandardMessage(data) {
         `👤 *Имя*: ${data.name}\n` +
         `📞 *Телефон*: ${data.phone}\n` +
         `📚 *Курс*: ${data.course}`;
-}
-
-// Генерация сообщения для модальной формы
-function generateModalMessage(data) {
-    return `📌 *Новая заявка* (Модальное окно):\n\n` +
-        `👤 *Имя*: ${data.name}\n` +
-        `📞 *Телефон*: ${data.phone}\n` +
-        `👨‍🏫 *Преподаватель*: ${data.teacher}\n` +
-        `⏰ *Время*: ${data.time}\n` +
-        `📝 *Комментарий*: ${data.comment || '—'}\n` +
-        `📞 *Обратный звонок*: ${data.callback ? '✅ Да' : '❌ Нет'}`;
 }
 
 // Отправка в Telegram
@@ -140,209 +110,149 @@ async function sendToTelegram(message, form, submitBtn, originalContent) {
 function initModal() {
     const modal = new bootstrap.Modal(document.getElementById('enrollmentModal'));
 
-    // Открытие по кнопкам с атрибутом [data-enrollment-modal]
-    document.querySelectorAll('[data-enrollment-modal]').forEach(btn => {
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(btn => {
         btn.addEventListener('click', () => {
-            renderTeachers();
             modal.show();
         });
     });
-
-    // Навигация по шагам
-    document.querySelector('.enrollment-form__nav-btn--next').addEventListener('click', function() {
-        const currentStep = document.querySelector('.enrollment-form__step--active');
-        const currentStepIndex = Array.from(document.querySelectorAll('.enrollment-form__step')).indexOf(currentStep);
-
-        // Если это последний шаг — отправка формы
-        if (currentStepIndex === 1) {
-            handleModalFormSubmit();
-            return;
-        }
-
-        // Переключение шагов
-        currentStep.classList.remove('enrollment-form__step--active');
-        document.querySelectorAll('.enrollment-form__step')[currentStepIndex + 1].classList.add('enrollment-form__step--active');
-        document.querySelectorAll('.enrollment-form__step-dot')[currentStepIndex].classList.remove('enrollment-form__step-dot--active');
-        document.querySelectorAll('.enrollment-form__step-dot')[currentStepIndex + 1].classList.add('enrollment-form__step-dot--active');
-        document.querySelector('.enrollment-form__nav-btn--prev').disabled = false;
-
-        // Обновление текста кнопки на последнем шаге
-        if (currentStepIndex + 1 === 1) {
-            this.innerHTML = 'Отправить <i class="fas fa-paper-plane"></i>';
-        }
-    });
-
-    document.querySelector('.enrollment-form__nav-btn--prev').addEventListener('click', function() {
-        const currentStep = document.querySelector('.enrollment-form__step--active');
-        const currentStepIndex = Array.from(document.querySelectorAll('.enrollment-form__step')).indexOf(currentStep);
-
-        currentStep.classList.remove('enrollment-form__step--active');
-        document.querySelectorAll('.enrollment-form__step')[currentStepIndex - 1].classList.add('enrollment-form__step--active');
-        document.querySelectorAll('.enrollment-form__step-dot')[currentStepIndex].classList.remove('enrollment-form__step-dot--active');
-        document.querySelectorAll('.enrollment-form__step-dot')[currentStepIndex - 1].classList.add('enrollment-form__step-dot--active');
-        document.querySelector('.enrollment-form__nav-btn--next').innerHTML = 'Далее <i class="fas fa-arrow-right"></i>';
-
-        if (currentStepIndex - 1 === 0) {
-            this.disabled = true;
-        }
-    });
 }
 
-// Рендер списка преподавателей
-function renderTeachers() {
-    const teachersList = document.querySelector('.enrollment-form__teachers-list');
-    teachersList.innerHTML = '';
+// Кнопка скролла
+function initScrollButton() {
+    const scrollBtn = document.getElementById('scrollTopBtn');
 
-    const teachers = [
-        { id: 1, name: 'Анна И.', subject: 'Английский', photo: 'img/teacher1.jpg' },
-        { id: 2, name: 'Петр С.', subject: 'Немецкий', photo: 'img/teacher2.jpg' },
-        { id: 3, name: 'Мария П.', subject: 'Французский', photo: 'img/teacher3.jpg' },
-        { id: 4, name: 'Иван К.', subject: 'Испанский', photo: 'img/teacher4.jpg' }
-    ];
+    window.addEventListener('scroll', () => {
+        scrollBtn.style.display = (window.pageYOffset > 300) ? 'block' : 'none';
+    });
 
-    teachers.forEach(teacher => {
-        const teacherItem = document.createElement('div');
-        teacherItem.className = 'enrollment-form__teacher-item';
-        teacherItem.dataset.teacherId = teacher.id;
-        teacherItem.innerHTML = `
-      <img src="${teacher.photo}" alt="${teacher.name}" class="enrollment-form__teacher-photo">
-      <span class="enrollment-form__teacher-name">${teacher.name}</span>
-      <small>${teacher.subject}</small>
-    `;
-        teacherItem.addEventListener('click', () => {
-            document.querySelectorAll('.enrollment-form__teacher-item').forEach(item => {
-                item.classList.remove('enrollment-form__teacher-item--selected');
-            });
-            teacherItem.classList.add('enrollment-form__teacher-item--selected');
-            renderSchedule(teacher.id);
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-        teachersList.appendChild(teacherItem);
     });
 }
 
-// Рендер расписания
-function renderSchedule(teacherId) {
-    const scheduleDays = document.querySelector('.enrollment-form__schedule-days');
-    scheduleDays.innerHTML = '';
-
-    const schedule = {
-        1: [
-            { day: 'Пн', slots: ['10:00', '14:00'] },
-            { day: 'Ср', slots: ['11:00', '15:00'] }
-        ],
-        2: [
-            { day: 'Вт', slots: ['09:00', '13:00'] }
-        ]
-    };
-
-    if (schedule[teacherId]) {
-        schedule[teacherId].forEach(day => {
-            const dayElement = document.createElement('div');
-            dayElement.className = 'enrollment-form__day';
-            dayElement.innerHTML = `
-        <div class="enrollment-form__day-name">${day.day}</div>
-        <div class="enrollment-form__time-slots"></div>
-      `;
-
-            const timeSlots = dayElement.querySelector('.enrollment-form__time-slots');
-            day.slots.forEach(slot => {
-                const slotElement = document.createElement('div');
-                slotElement.className = 'enrollment-form__time-slot';
-                slotElement.textContent = slot;
-                slotElement.addEventListener('click', () => {
-                    document.querySelectorAll('.enrollment-form__time-slot').forEach(s => {
-                        s.classList.remove('enrollment-form__time-slot--selected');
-                    });
-                    slotElement.classList.add('enrollment-form__time-slot--selected');
-                });
-                timeSlots.appendChild(slotElement);
-            });
-
-            scheduleDays.appendChild(dayElement);
-        });
-    } else {
-        scheduleDays.innerHTML = '<div class="text-muted">Расписание не доступно</div>';
-    }
-}
-// 1. Создаем массив преимуществ
-const features = [
-    "Опытные преподаватели",
-    "Индивидуальный подход", 
-    "Международные сертификаты"
-  ];
-  
-  // 2. Выводим в блок features
-  const featuresContainer = document.querySelector('.features__grid');
-  
-  features.forEach((feature, index) => {
-    featuresContainer.innerHTML += `
-      <div class="feature">
-        <h3>Преимущество ${index + 1}</h3>
-        <p>${feature}</p>
-      </div>
-    `;
-  });
-  // Кнопка скролла
-const scrollBtn = document.getElementById('scrollTopBtn');
-
-window.addEventListener('scroll', () => {
-  scrollBtn.style.display = (window.pageYOffset > 300) ? 'block' : 'none';
-});
-
-scrollBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-// 1. Создаем объект с данными
-const featuresData = {
-    feature1: {
-      icon: 'fas fa-chalkboard-teacher',
-      title: 'Опытные преподаватели',
-      description: 'Все наши преподаватели имеют международные сертификаты'
-    },
-    feature2: {
-      icon: 'fas fa-user-graduate',
-      title: 'Индивидуальный подход',
-      description: 'Программа подбирается под ваш уровень'
-    }
-  };
-  
-  // 2. Выводим данные в вёрстку 
-  const featuresContainer = document.querySelector('.features__grid');
-  featuresContainer.innerHTML = `
-    <div class="feature">
-      <i class="${featuresData.feature1.icon}"></i>
-      <h3>${featuresData.feature1.title}</h3>
-      <p>${featuresData.feature1.description}</p>
-    </div>
-  `;
-
-  // Загрузка данных из JSON
+// Загрузка данных
 async function loadData() {
     try {
-      const response = await fetch('data.json');
-      if (!response.ok) throw new Error('Ошибка загрузки');
-      const data = await response.json();
-      renderFeatures(data.features);
+        // Мок данные, если нет data.json
+        const mockData = {
+            features: [
+                {
+                    icon: 'fas fa-chalkboard-teacher',
+                    title: 'Опытные преподаватели',
+                    text: 'Все наши преподаватели имеют международные сертификаты и минимум 5 лет опыта работы.'
+                },
+                {
+                    icon: 'fas fa-user-graduate',
+                    title: 'Индивидуальный подход',
+                    text: 'Программа обучения подбирается индивидуально под ваши цели и уровень подготовки.'
+                },
+                {
+                    icon: 'fas fa-certificate',
+                    title: 'Международные сертификаты',
+                    text: 'По окончании курса вы получите сертификат международного образца.'
+                }
+            ],
+            teachers: [
+                {
+                    id: 1,
+                    photo: 'img/teacher_anna.png',
+                    name: 'Анна Иванова',
+                    subject: 'Английский язык'
+                },
+                {
+                    id: 2,
+                    photo: 'img/teacher_zinaida.png',
+                    name: 'Зинаида Петровна',
+                    subject: 'Немецкий язык'
+                },
+                {
+                    id: 3,
+                    photo: 'img/teacher_maria.png',
+                    name: 'Мария Петрова',
+                    subject: 'Французский язык'
+                },
+                {
+                    id: 4,
+                    photo: 'img/teacher_ivan.png',
+                    name: 'Иван Кузнецов',
+                    subject: 'Испанский язык'
+                }
+            ]
+        };
+
+        renderFeatures(mockData.features);
+        renderTeachers(mockData.teachers);
+        initSwiper();
     } catch (error) {
-      console.error('Ошибка:', error);
+        console.error('Ошибка загрузки данных:', error);
     }
-  }
-  
-  function renderFeatures(features) {
+}
+
+// Рендер преимуществ
+function renderFeatures(features) {
     const container = document.querySelector('.features__grid');
-    container.innerHTML = features.map(feature => `
-      <div class="feature">
-        <i class="${feature.icon}"></i>
-        <h3>${feature.title}</h3>
-        <p>${feature.text}</p>
-      </div>
-    `).join('');
-  }
-  
-  // Запускаем загрузку при старте
-  loadData();
+    if (container) {
+        container.innerHTML = features.map(feature => `
+            <div class="feature">
+                <div class="feature__icon">
+                    <i class="${feature.icon}"></i>
+                </div>
+                <h3 class="feature__title">${feature.title}</h3>
+                <p class="feature__text">${feature.text}</p>
+            </div>
+        `).join('');
+    }
+}
 
+// Рендер преподавателей
+function renderTeachers(teachers) {
+    const container = document.querySelector('.teacherSwiper .swiper-wrapper');
+    if (container) {
+        container.innerHTML = teachers.map(teacher => `
+            <div class="swiper-slide">
+                <div class="teacher">
+                    <img src="${teacher.photo}" alt="${teacher.name}" class="teacher__photo">
+                    <h3 class="teacher__name">${teacher.name}</h3>
+                    <p class="teacher__subject">${teacher.subject}</p>
+                    <button class="button button--primary button--sm" data-bs-toggle="modal" data-bs-target="#enrollmentModal">Записаться</button>
+                </div>
+            </div>
+        `).join('');
+    }
+}
 
+// Инициализация Swiper
+function initSwiper() {
+    if (document.querySelector('.teacherSwiper')) {
+        const teacherSwiper = new Swiper('.teacherSwiper', {
+            slidesPerView: 1, // Всегда 1 слайд
+            spaceBetween: 20, // Расстояние между слайдами (можно оставить, если нужно)
+            loop: true, // для зацикливания
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // брейки под разные устройства
+            /*
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 4,
+                }
+            }
+            */
+        });
+    }
+}
