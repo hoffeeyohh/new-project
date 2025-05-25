@@ -824,3 +824,88 @@
   .scroll-top:hover {
     background: #0b5ed7;
   }
+
+  /* Карусель преподавателей */
+/*.teacherSwiper {
+    padding: 20px 30px 50px;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #0d6efd;
+    top: 35%;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.8rem;
+}
+
+.swiper-pagination-bullet-active {
+    background: #0d6efd;
+}
+
+@media (max-width: 768px) {
+    .teacherSwiper {
+        padding: 0 15px 40px;
+    }
+}*/
+
+/* Стили для контейнера Swiper, чтобы внутренние элементы позиционировались относительно него */
+.teacherSwiper {
+    position: relative !important; /* Добавлено !important */
+    padding-bottom: 40px !important; /* Добавлено !important */
+}
+
+/* Стили для кнопок навигации */
+.teacherSwiper .swiper-button-next,
+.teacherSwiper .swiper-button-prev {
+    position: absolute !important; /* Добавлено !important */
+    top: 50% !important; /* Добавлено !important */
+    transform: translateY(-50%) !important; /* Добавлено !important */
+    z-index: 10 !important; /* Добавлено !important */
+    cursor: pointer !important;
+    width: 44px !important; /* Добавлено !important */
+    height: 44px !important; /* Добавлено !important */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #333 !important; /* Добавлено !important */
+}
+
+.teacherSwiper .swiper-button-prev {
+    left: 10px !important; /* Добавлено !important */
+}
+
+.teacherSwiper .swiper-button-next {
+    right: 10px !important; /* Добавлено !important */
+}
+
+/* Стили для пагинации (точек) */
+.teacherSwiper .swiper-pagination {
+    position: absolute !important; /* Добавлено !important */
+    bottom: 10px !important; /* Добавлено !important */
+    left: 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+    z-index: 10 !important; /* Добавлено !important */
+}
+
+/* Стили для отдельных точек пагинации, чтобы они были видны */
+.swiper-pagination-bullet {
+    background-color: #888 !important; /* Добавлено !important */
+    opacity: 0.7 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #007aff !important; /* Добавлено !important */
+    opacity: 1 !important;
+}
+
