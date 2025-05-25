@@ -1,0 +1,911 @@
+/* Блок header */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.header__logo {
+    height: 60px;
+    width: 60px;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+}
+
+.header__nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header__nav-item {
+    margin-right: 20px;
+}
+
+.header__nav-link {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.header__nav-link:hover {
+    color: #0d6efd;
+}
+
+.header__auth {
+    display: flex;
+    gap: 10px;
+    margin-left: 30px;
+}
+
+/* Блок hero */
+.hero {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.hero__container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.hero__content {
+    flex: 1;
+}
+
+.hero__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #212529;
+}
+
+.hero__text {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+    max-width: 600px;
+}
+
+.hero__form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.hero__form-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #212529;
+}
+
+.hero__form-group {
+    margin-bottom: 15px;
+}
+
+.hero__form-input, .hero__form-select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.hero__form-note {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-align: center;
+}
+
+.hero__form-note a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+/* Блок features */
+.features {
+    padding: 60px 0;
+}
+
+.features__title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2rem;
+    color: #212529;
+}
+
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+}
+
+.feature__icon {
+    font-size: 3rem;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+.feature__title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #212529;
+}
+
+.feature__text {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* Блок teachers */
+.teachers {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.teachers__title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2rem;
+    color: #212529;
+}
+
+.teachers__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.teacher {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.teacher__photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.teacher__name {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #212529;
+}
+
+.teacher__subject {
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+/* Блок cta */
+.cta {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.cta__title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.cta__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Блок footer */
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.footer__column-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.footer__address {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.footer__phone {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 15px;
+}
+
+.footer__social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer__social-link {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.footer__social-link:hover {
+    color: #0d6efd;
+}
+
+.footer__map {
+    height: 400px;
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Модификаторы кнопок */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button--primary {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.button--primary:hover {
+    background-color: #0b5ed7;
+    color: #fff;
+}
+
+.button--outline {
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    background-color: transparent;
+}
+
+.button--outline:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.button--light {
+    background-color: #fff;
+    color: #0d6efd;
+}
+
+.button--light:hover {
+    background-color: #f8f9fa;
+}
+
+.button--outline-light {
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: transparent;
+}
+
+.button--outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.button--lg {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+}
+
+.button--sm {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.button--block {
+    display: block;
+    width: 100%;
+}
+
+/* Блок enrollment-modal */
+.enrollment-modal {
+    border-radius: 15px;
+    border: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.enrollment-modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    color: #6c757d;
+    z-index: 10;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.enrollment-modal__close:hover {
+    color: #0d6efd;
+}
+
+.enrollment-modal__body {
+    padding: 30px;
+}
+
+.enrollment-modal__title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #212529;
+}
+
+.enrollment-modal__subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #495057;
+}
+
+.enrollment-modal__step {
+    display: none;
+}
+
+.enrollment-modal__step--active {
+    display: block;
+}
+
+/* Список преподавателей */
+.enrollment-modal__teachers-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.enrollment-modal__teacher-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.enrollment-modal__teacher-item:hover {
+    border-color: #0d6efd;
+}
+
+.enrollment-modal__teacher-item--selected {
+    background-color: #e7f1ff;
+    border-color: #0d6efd;
+}
+
+.enrollment-modal__teacher-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+
+.enrollment-modal__teacher-name {
+    font-size: 0.85rem;
+    text-align: center;
+    color: #212529;
+}
+
+/* Модальное окно */
+.enrollment-form__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    color: #6c757d;
+    z-index: 10;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.enrollment-form__close:hover {
+    color: #0d6efd;
+}
+
+.enrollment-form__step {
+    display: none;
+}
+
+.enrollment-form__step--active {
+    display: block;
+}
+
+/* Список преподавателей */
+.enrollment-form__teachers-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.enrollment-form__teacher-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.enrollment-form__teacher-item:hover {
+    border-color: #0d6efd;
+}
+
+.enrollment-form__teacher-item--selected {
+    background-color: #e7f1ff;
+    border-color: #0d6efd;
+}
+
+.enrollment-form__teacher-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+
+/* Расписание */
+.enrollment-form__schedule-days {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.enrollment-form__day {
+    min-width: 100px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.enrollment-form__day-name {
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #212529;
+}
+
+.enrollment-form__time-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.enrollment-form__time-slot {
+    padding: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.enrollment-form__time-slot:hover {
+    background-color: #e9ecef;
+}
+
+.enrollment-form__time-slot--selected {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Навигация */
+.enrollment-form__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+.enrollment-form__nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.enrollment-form__nav-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.enrollment-form__nav-btn--prev {
+    background-color: #6c757d;
+}
+
+.enrollment-form__nav-btn--prev:hover {
+    background-color: #5a6268;
+}
+
+.enrollment-form__nav-btn:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    cursor: not-allowed;
+}
+
+.enrollment-form__steps-indicator {
+    display: flex;
+    gap: 8px;
+}
+
+.enrollment-form__step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #dee2e6;
+}
+
+.enrollment-form__step-dot--active {
+    background-color: #0d6efd;
+}
+
+/* Навигация */
+.enrollment-modal__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+.enrollment-modal__nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.enrollment-modal__nav-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.enrollment-modal__nav-btn--prev {
+    background-color: #6c757d;
+}
+
+.enrollment-modal__nav-btn--prev:hover {
+    background-color: #5a6268;
+}
+
+.enrollment-modal__nav-btn:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    cursor: not-allowed;
+}
+
+.enrollment-modal__steps-indicator {
+    display: flex;
+    gap: 8px;
+}
+
+.enrollment-modal__step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #dee2e6;
+}
+
+.enrollment-modal__step-dot--active {
+    background-color: #0d6efd;
+}
+
+/* Блок enrollment-form */
+.enrollment-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.enrollment-form__title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #212529;
+}
+
+.enrollment-form__group {
+    margin-bottom: 15px;
+}
+
+.enrollment-form__input,
+.enrollment-form__select,
+.enrollment-form__textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.enrollment-form__input:focus,
+.enrollment-form__select:focus,
+.enrollment-form__textarea:focus {
+    border-color: #0d6efd;
+    outline: none;
+}
+
+.enrollment-form__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+
+.enrollment-form__textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.enrollment-form__submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.enrollment-form__note {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-align: center;
+}
+
+.enrollment-form__note a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+.modal-content.enrollment-form {
+    max-width: 500px; 
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px; 
+}
+
+.enrollment-form__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    color: #6c757d;
+    z-index: 10;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.enrollment-form__body {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+}
+
+.modal-content {
+    width: 100%;
+}
+.button {
+    transition: all 0.3s ease;
+  }
+  
+  .button--primary:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-2px);
+  }
+  
+  .button--primary:active {
+    transform: translateY(0);
+  }
+  
+  .button--primary:focus {
+    outline: 2px solid rgba(13, 110, 253, 0.5);
+  }
+  
+  .button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+    z-index: 99;
+  }
+  
+  .scroll-top:hover {
+    background: #0b5ed7;
+  }
+
+  /* Карусель преподавателей */
+/*.teacherSwiper {
+    padding: 20px 30px 50px;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #0d6efd;
+    top: 35%;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.8rem;
+}
+
+.swiper-pagination-bullet-active {
+    background: #0d6efd;
+}
+
+@media (max-width: 768px) {
+    .teacherSwiper {
+        padding: 0 15px 40px;
+    }
+}*/
+
+/* Стили для контейнера Swiper, чтобы внутренние элементы позиционировались относительно него */
+.teacherSwiper {
+    position: relative !important; /* Добавлено !important */
+    padding-bottom: 40px !important; /* Добавлено !important */
+}
+
+/* Стили для кнопок навигации */
+.teacherSwiper .swiper-button-next,
+.teacherSwiper .swiper-button-prev {
+    position: absolute !important; /* Добавлено !important */
+    top: 50% !important; /* Добавлено !important */
+    transform: translateY(-50%) !important; /* Добавлено !important */
+    z-index: 10 !important; /* Добавлено !important */
+    cursor: pointer !important;
+    width: 44px !important; /* Добавлено !important */
+    height: 44px !important; /* Добавлено !important */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #333 !important; /* Добавлено !important */
+}
+
+.teacherSwiper .swiper-button-prev {
+    left: 10px !important; /* Добавлено !important */
+}
+
+.teacherSwiper .swiper-button-next {
+    right: 10px !important; /* Добавлено !important */
+}
+
+/* Стили для пагинации (точек) */
+.teacherSwiper .swiper-pagination {
+    position: absolute !important; /* Добавлено !important */
+    bottom: 10px !important; /* Добавлено !important */
+    left: 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+    z-index: 10 !important; /* Добавлено !important */
+}
+
+/* Стили для отдельных точек пагинации, чтобы они были видны */
+.swiper-pagination-bullet {
+    background-color: #888 !important; /* Добавлено !important */
+    opacity: 0.7 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #007aff !important; /* Добавлено !important */
+    opacity: 1 !important;
+}
+
