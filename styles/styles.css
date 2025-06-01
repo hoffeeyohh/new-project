@@ -858,54 +858,91 @@
     }
 }*/
 
-/* Стили для контейнера Swiper, чтобы внутренние элементы позиционировались относительно него */
+
 .teacherSwiper {
-    position: relative !important; /* Добавлено !important */
-    padding-bottom: 40px !important; /* Добавлено !important */
+    position: relative !important; 
+    padding-bottom: 40px !important; 
 }
 
 /* Стили для кнопок навигации */
 .teacherSwiper .swiper-button-next,
 .teacherSwiper .swiper-button-prev {
-    position: absolute !important; /* Добавлено !important */
-    top: 50% !important; /* Добавлено !important */
-    transform: translateY(-50%) !important; /* Добавлено !important */
-    z-index: 10 !important; /* Добавлено !important */
+    position: absolute !important; 
+    top: 50% !important; 
+    transform: translateY(-50%) !important; 
+    z-index: 10 !important; 
     cursor: pointer !important;
-    width: 44px !important; /* Добавлено !important */
-    height: 44px !important; /* Добавлено !important */
+    width: 44px !important; 
+    height: 44px !important; 
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    color: #333 !important; /* Добавлено !important */
+    color: #333 !important; 
 }
 
 .teacherSwiper .swiper-button-prev {
-    left: 10px !important; /* Добавлено !important */
+    left: 10px !important; 
 }
 
 .teacherSwiper .swiper-button-next {
-    right: 10px !important; /* Добавлено !important */
+    right: 10px !important; 
 }
 
 /* Стили для пагинации (точек) */
 .teacherSwiper .swiper-pagination {
-    position: absolute !important; /* Добавлено !important */
-    bottom: 10px !important; /* Добавлено !important */
+    position: absolute !important; 
+    bottom: 10px !important; 
     left: 0 !important;
     width: 100% !important;
     text-align: center !important;
-    z-index: 10 !important; /* Добавлено !important */
+    z-index: 10 !important; 
 }
 
-/* Стили для отдельных точек пагинации, чтобы они были видны */
+
 .swiper-pagination-bullet {
-    background-color: #888 !important; /* Добавлено !important */
+    background-color: #888 !important; 
     opacity: 0.7 !important;
 }
 
 .swiper-pagination-bullet-active {
-    background-color: #007aff !important; /* Добавлено !important */
+    background-color: #007aff !important; 
     opacity: 1 !important;
 }
 
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    transition: opacity 0.5s ease; 
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-left-color: #0d6efd; 
+    animation: spin 1s ease infinite; 
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

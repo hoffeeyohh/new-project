@@ -1,8 +1,4 @@
-/**
- * Унифицированная система форм с отправкой в Telegram
- */
 
-// Конфигурация
 const config = {
     telegram: {
         botToken: '7564908163:AAGODR5Z6V586b81B5ghU0D1aGGx2CzIjyk',
@@ -21,7 +17,7 @@ const config = {
 document.addEventListener('DOMContentLoaded', function() {
     initForms();
     initScrollButton();
-    loadData();
+    loadDataAndInitializeUI(); 
 });
 
 // Инициализация всех форм
@@ -133,61 +129,39 @@ function initScrollButton() {
     });
 }
 
-// Загрузка данных
-async function loadData() {
+// Новая функция для загрузки данных и инициализации UI
+async function loadDataAndInitializeUI() {
     try {
-        // Мок данные, если нет data.json
-        const mockData = {
-            features: [
-                {
-                    icon: 'fas fa-chalkboard-teacher',
-                    title: 'Опытные преподаватели',
-                    text: 'Все наши преподаватели имеют международные сертификаты и минимум 5 лет опыта работы.'
-                },
-                {
-                    icon: 'fas fa-user-graduate',
-                    title: 'Индивидуальный подход',
-                    text: 'Программа обучения подбирается индивидуально под ваши цели и уровень подготовки.'
-                },
-                {
-                    icon: 'fas fa-certificate',
-                    title: 'Международные сертификаты',
-                    text: 'По окончании курса вы получите сертификат международного образца.'
-                }
-            ],
-            teachers: [
-                {
-                    id: 1,
-                    photo: 'img/teacher_anna.png',
-                    name: 'Анна Иванова',
-                    subject: 'Английский язык'
-                },
-                {
-                    id: 2,
-                    photo: 'img/teacher_zinaida.png',
-                    name: 'Зинаида Петровна',
-                    subject: 'Немецкий язык'
-                },
-                {
-                    id: 3,
-                    photo: 'img/teacher_maria.png',
-                    name: 'Мария Петрова',
-                    subject: 'Французский язык'
-                },
-                {
-                    id: 4,
-                    photo: 'img/teacher_ivan.png',
-                    name: 'Иван Кузнецов',
-                    subject: 'Испанский язык'
-                }
-            ]
-        };
+       
+        const response = await fetch('data/data.json'); 
+        
 
-        renderFeatures(mockData.features);
-        renderTeachers(mockData.teachers);
-        initSwiper();
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        renderFeatures(data.features);
+        renderTeachers(data.teachers);
+        initSwiper(); 
+
+       
+        setTimeout(hidePreloader, 500); 
     } catch (error) {
         console.error('Ошибка загрузки данных:', error);
+        hidePreloader();
+        alert('Не удалось загрузить данные. Попробуйте обновить страницу.');
+    }
+}
+
+function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('hidden');
+       
+        preloader.addEventListener('transitionend', function() {
+            preloader.remove();
+        });
     }
 }
 
@@ -226,11 +200,12 @@ function renderTeachers(teachers) {
 
 // Инициализация Swiper
 function initSwiper() {
-    if (document.querySelector('.teacherSwiper')) {
+    const teacherSwiperElement = document.querySelector('.teacherSwiper');
+    if (teacherSwiperElement && teacherSwiperElement.querySelector('.swiper-slide')) {
         const teacherSwiper = new Swiper('.teacherSwiper', {
-            slidesPerView: 1, // Всегда 1 слайд
-            spaceBetween: 20, // Расстояние между слайдами (можно оставить, если нужно)
-            loop: true, // для зацикливания
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -239,20 +214,8 @@ function initSwiper() {
                 el: '.swiper-pagination',
                 clickable: true,
             },
-            // брейки под разные устройства
-            /*
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                },
-                992: {
-                    slidesPerView: 3,
-                },
-                1200: {
-                    slidesPerView: 4,
-                }
-            }
-            */
         });
+    } else {
+        console.warn('Swiper не инициализирован: элементы слайдера не найдены.');
     }
 }
